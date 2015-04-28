@@ -1,0 +1,123 @@
+{ index: [Function] }
+Express server listening on port 3000
+[90mGET /blog/553f22fdea56c4a94c00000a [36m304 [90m28ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m9ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m7ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m6ms[0m
+[90mGET /public/js/main.js [36m304 [90m6ms[0m
+[90mGET /public/lib/js/jquery-1.11.0.min.js [36m304 [90m2ms[0m
+[90mGET /public/js/blog.js [36m304 [90m1ms[0m
+{ host: 'localhost:3000',
+  connection: 'keep-alive',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36',
+  referer: 'http://localhost:3000/blog/553f22fdea56c4a94c00000a',
+  'accept-encoding': 'gzip,deflate,sdch',
+  'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6' }
+[90mGET /post [32m200 [90m11ms - 2.04kb[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m6ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m2ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m3ms[0m
+[90mGET /public/js/main.js [36m304 [90m2ms[0m
+{ host: 'localhost:3000',
+  connection: 'keep-alive',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36',
+  referer: 'http://localhost:3000/post',
+  'accept-encoding': 'gzip,deflate,sdch',
+  'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
+  'if-none-match': '"-717443369"' }
+[90mGET /post [36m304 [90m12ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m5ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m5ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m5ms[0m
+[90mGET /public/js/main.js [36m304 [90m4ms[0m
+{ host: 'localhost:3000',
+  connection: 'keep-alive',
+  'cache-control': 'max-age=0',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36',
+  referer: 'http://localhost:3000/post',
+  'accept-encoding': 'gzip,deflate,sdch',
+  'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
+  'if-none-match': '"-717443369"' }
+[90mGET /post [36m304 [90m6ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m4ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m3ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m4ms[0m
+[90mGET /public/js/main.js [36m304 [90m3ms[0m
+{ host: 'localhost:3000',
+  connection: 'keep-alive',
+  'cache-control': 'max-age=0',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36',
+  referer: 'http://localhost:3000/post',
+  'accept-encoding': 'gzip,deflate,sdch',
+  'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
+  'if-none-match': '"-717443369"' }
+[90mGET /post [36m304 [90m10ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m3ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m3ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m2ms[0m
+[90mGET /public/js/main.js [36m304 [90m3ms[0m
+{ host: 'localhost:3000',
+  connection: 'keep-alive',
+  'cache-control': 'max-age=0',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36',
+  referer: 'http://localhost:3000/post',
+  'accept-encoding': 'gzip,deflate,sdch',
+  'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
+  'if-none-match': '"-717443369"' }
+[90mGET /post [36m304 [90m10ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m1ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m1ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m1ms[0m
+[90mGET /public/js/main.js [36m304 [90m1ms[0m
+{ host: 'localhost:3000',
+  connection: 'keep-alive',
+  'cache-control': 'max-age=0',
+  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36',
+  referer: 'http://localhost:3000/post',
+  'accept-encoding': 'gzip,deflate,sdch',
+  'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
+  'if-none-match': '"-717443369"' }
+[90mGET /post [36m304 [90m9ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m3ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m2ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m2ms[0m
+[90mGET /public/js/main.js [36m304 [90m2ms[0m
+[90mGET / [36m304 [90m14ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m3ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m3ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m2ms[0m
+[90mGET /public/js/main.js [36m304 [90m5ms[0m
+[90mGET /blog/5539f192e940b7956f0000f9 [32m200 [90m19ms - 4.7kb[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m1ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m3ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m3ms[0m
+[90mGET /public/js/main.js [36m304 [90m3ms[0m
+[90mGET /public/lib/js/jquery-1.11.0.min.js [36m304 [90m1ms[0m
+[90mGET /public/js/blog.js [36m304 [90m1ms[0m
+[90mGET / [36m304 [90m10ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m2ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m2ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m2ms[0m
+[90mGET /public/js/main.js [36m304 [90m2ms[0m
+[90mGET /blog [36m304 [90m4ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m1ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m2ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m1ms[0m
+[90mGET /public/js/main.js [36m304 [90m2ms[0m
+[90mGET / [36m304 [90m9ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m7ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m7ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m7ms[0m
+[90mGET /public/js/main.js [36m304 [90m5ms[0m
+[90mGET /note [32m200 [90m8ms - 2.47kb[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m1ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m2ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m1ms[0m
+[90mGET /public/js/main.js [36m304 [90m1ms[0m
+[90mGET /about [33m404 [90m2ms[0m

@@ -1,0 +1,29 @@
+<% include ../header.html %>
+
+<h2 class="title">
+<%=title%>
+</h2>
+
+<div class="content">
+<%-content.replace(/\n/g,"<br/>")%>
+</div>
+
+<div class="bar">
+	<span class="date"><%-post_time%></span>
+	<span class="author"><%=author%></span>
+	<span class="author"><a href="../blog/edit/<%=_id%>">编辑</a></span>
+	<span class="author"><a href="javascript:;" id="drop" data-id="<%=_id%>">删除</a></span>
+</div>
+<script type="text/javascript">
+	require(['jquery','blog'],function($,blog){
+		$('#drop').click(function(){
+			blog.drop($(this).attr('data-id'),function(msg){
+				alert(msg);
+				location.href = '/blog';
+			});
+		})
+		
+	});
+</script>
+
+<% include ../footer.html %>

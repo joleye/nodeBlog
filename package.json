@@ -1,0 +1,15 @@
+{
+  "name": "nodeBlog",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.6",
+    "ejs": "*",
+    "mongoose": "~2.8.0",
+    "utility": "1.0.0",
+    "ejs-mate": "2.0.0"
+  }
+}

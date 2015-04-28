@@ -1,0 +1,20 @@
+<% include header.html %>
+
+<form class="form-" action="post" method="POST">
+<%if(typeof(result) !== 'undefined'){%>
+<div class="alert alert-<%=result ? 'success' : 'warning'%>" role="alert"><%=msg%></div>
+<%}%>
+<div class="form-group">
+    <label for="title">标题</label>
+    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<%=title?title:''%>">
+  </div>
+
+<div class="form-group">
+    <label for="content">内容</label>
+    <textarea type="text" class="form-control" style="height:200px;" id="content" name="content" placeholder="Enter content"><%=content?content:''%></textarea>
+  </div>
+
+<button type="submit" class="btn btn-default">发布</button>
+</form>
+
+<% include footer.html %>
