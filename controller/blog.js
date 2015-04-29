@@ -61,9 +61,12 @@ exports.edit = function(req, res){
 	if(!blog_id){
 		res.render('notify',{result : false , msg : '没有找到该文章! '});
 	}else{
-  		var param = new Blog();
-
-  		res.render('post', param);
+  		blog.getBlogById(blog_id,function(err, blog){
+		if(!blog){
+			res.render('notify',{result : false, msg : '该文章不存在!'})
+		}else
+			res.render('post', blog);
+		});
 	}
 };
 
