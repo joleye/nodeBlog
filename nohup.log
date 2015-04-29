@@ -121,3 +121,26 @@ Express server listening on port 3000
 [90mGET /public/lib/js/require.js [36m304 [90m1ms[0m
 [90mGET /public/js/main.js [36m304 [90m1ms[0m
 [90mGET /about [33m404 [90m2ms[0m
+[90mGET / [36m304 [90m9ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m1ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m2ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m2ms[0m
+[90mGET /public/js/main.js [36m304 [90m2ms[0m
+[90mGET /blog/5539f192e940b7956f0000f9 [36m304 [90m14ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m2ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m2ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m1ms[0m
+[90mGET /public/js/main.js [36m304 [90m1ms[0m
+[90mGET /public/lib/js/jquery-1.11.0.min.js [36m304 [90m2ms[0m
+[90mGET /public/js/blog.js [36m304 [90m1ms[0m
+[90mGET / [32m200 [90m52010ms - 2.47kb[0m
+[90mGET / [36m304 [90m59768ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m1ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m1ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m1ms[0m
+[90mGET /public/js/main.js [36m304 [90m0ms[0m
+[90mGET / [36m304 [90m7ms[0m
+[90mGET /public/lib/bootstrap/css/bootstrap.min.css [36m304 [90m4ms[0m
+[90mGET /public/stylesheets/base.css [36m304 [90m5ms[0m
+[90mGET /public/lib/js/require.js [36m304 [90m5ms[0m
+[90mGET /public/js/main.js [36m304 [90m5ms[0m
