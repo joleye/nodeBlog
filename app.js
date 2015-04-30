@@ -13,8 +13,6 @@ var app = express();
 
 // all environments
 
-console.log(process.env.PORT)
-
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
@@ -30,8 +28,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
-console.log(routes);
 
 //列表
 app.get('/', blog.list);

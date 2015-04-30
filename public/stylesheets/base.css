@@ -78,3 +78,8 @@ body {
 	padding : 10px;
 	border-top: 1px solid #f0f0f0;
 }
+
+.bar{
+	text-align: right;
+	padding:10px;
+}

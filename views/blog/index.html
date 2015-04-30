@@ -9,16 +9,18 @@
 </div>
 
 <div class="bar">
-	<span class="date"><%-post_time%></span>
-	<span class="author"><%=author%></span>
-	<span class="author"><a href="../blog/edit/<%=_id%>">编辑</a></span>
-	<span class="author"><a href="javascript:;" id="drop" data-id="<%=_id%>">删除</a></span>
+	<span class="date">posted @ <%=post_time_friendly%></span>
+	<span class="author"><%//author%></span>
+	<span class="visit">阅读(<%=visit_count%>)</span>
+	<span class="reply">评论(<%=reply_count%>)</span>
+	<span class="edit"><a href="../blog/edit/<%=_id%>">编辑</a></span>
+	<span class="drop"><a href="javascript:;" id="drop" data-id="<%=_id%>">删除</a></span>
 </div>
+
 <script type="text/javascript">
 	require(['jquery','blog'],function($,blog){
 		$('#drop').click(function(){
 			blog.drop($(this).attr('data-id'),function(msg){
-				alert(msg);
 				location.href = '/blog';
 			});
 		})
