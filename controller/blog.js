@@ -5,11 +5,17 @@ var FormatHelper = require('../common/FormatHelper');
 exports.list = function(req, res){
 
 	blog.getQueryList({}, {},function(err, list){
+
+		for(var i=0;i<list.length;i++){
+			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,false);
+		}
+
 		res.render('blog', {
 			title : 'home-NodeBlog',
 			blogs : list 
 		});
 	});
+
 };
 
 /*显示博客内容*/
@@ -41,12 +47,7 @@ exports.postSave = function(req, res){
 
 	if(param.title != '' && param.content != ''){
 		var blog_id = req.body.blog_id;
-
-		console.log('blog_id');
-		console.log(blog_id);
-
 		param._id = blog_id;
-
 		if(blog_id){
 			blog.update(blog_id,param,function(err){
 				if(err){
@@ -76,9 +77,6 @@ exports.postSave = function(req, res){
 		param.msg = '发布内容不能为空';
 		res.render('post', param);
 	}
-
-
-	
 };
 
 /*编辑博客内容*/

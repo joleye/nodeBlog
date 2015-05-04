@@ -83,3 +83,8 @@ body {
 	text-align: right;
 	padding:10px;
 }
+
+#login-form{
+	width:450px;
+	margin:auto;
+}

@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , blog = require('./controller/blog')
+  , user = require('./controller/user')
   , http = require('http')
   , path = require('path');
 
@@ -50,6 +51,12 @@ app.get('/note', blog.list);
 app.get('/post', blog.post);
 app.post('/post', blog.postSave);
 app.get('/blog/edit/:id',blog.edit);
+
+//登录注册
+app.get('/signin',user.login);
+app.get('/signup',user.register);
+app.post('/signup',user.postRegister);
+app.get('/password_reset',user.password_reset);
 
 
 
