@@ -35,11 +35,11 @@ exports.detail = function(req,res){
 
 exports.post = function(req, res){
 	var blog = new Blog();
+	blog._id = undefined;
 	res.render('post', blog);
 };
 
 exports.postSave = function(req, res){
-
 	var param = {
 		title :  req.body.title,
 		content : req.body.content
@@ -48,6 +48,7 @@ exports.postSave = function(req, res){
 	if(param.title != '' && param.content != ''){
 		var blog_id = req.body.blog_id;
 		param._id = blog_id;
+
 		if(blog_id){
 			blog.update(blog_id,param,function(err){
 				if(err){
