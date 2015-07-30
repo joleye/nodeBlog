@@ -1,0 +1,57 @@
+<% include header.html %>
+
+<div class="panel">
+    <div class="header">
+      <ul class="breadcrumb">
+        <li><a href="/">主页</a><span class="divider">/</span></li>
+        <li class="active">注册</li>
+      </ul>
+    </div>
+ </div>
+
+<div class="panel">
+<form class="form-horizontal" method="POST">
+  <div class="form-group">
+    <label for="email" class="col-sm-3 control-label">邮箱</label>
+    <div class="col-sm-7">
+    <input type="text" class="form-control" id="email" name="email" placeholder="邮箱" check-rule="email" check-warning="错误" check-correct="正确">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label">密码</label>
+    <div class="col-sm-7">
+    <input type="password" class="form-control" id="password" name="password" placeholder="密码" check-rule="require" check-warning="错误" check-correct="正确">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="repassword" class="col-sm-3 control-label">重复密码</label>
+    <div class="col-sm-7">
+    <input type="password" class="form-control" id="repassword" name="repassword" placeholder="密码" check-rule="require" check-warning="错误" check-correct="正确">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+      <button type="button" class="btn btn-primary" id="btn-login">登录</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<script type="text/javascript">
+  require(['jquery','ye_check'],function($,blog){
+    $('#btn-login').click(function(){
+
+        ye.verify('.form-horizontal').do_post({
+            method : 'http',//ajax模式提交
+            btn : {
+              name : '#btn-login',
+              text : 'load...'
+            }
+          });
+     
+    })
+    
+  });
+</script>
+
+<% include footer.html %>

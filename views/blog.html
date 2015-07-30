@@ -7,18 +7,18 @@
         <li class="active"><a href="/blog">博客列表</a></li>
       </ul>
     </div>
-  </div>
+</div>
 
 <div class="panel">
 <%for(var i in blogs){%>
-<div class="row">
-	<span class="col-xs-6">
-	<a href="blog/<%=blogs[i]._id%>"><%=blogs[i].title!='' ? blogs[i].title : 'undefined'%></a>
-	</span>
+	<div class="row">
+		<span class="col-xs-6">
+		<a href="blog/<%=blogs[i]._id%>"><%=blogs[i].title!='' ? blogs[i].title : 'undefined'%></a>
+		</span>
 
-	<span class="col-sm-4">
-	<%=blogs[i].post_time%>
-	</span>
+		<span class="col-sm-4">
+		<%=blogs[i].post_time_friendly%>
+		</span>
 	</div>
 <%}%>
 </div>

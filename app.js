@@ -6,12 +6,14 @@
 var express = require('express')
   , routes = require('./routes')
   , blog = require('./controller/blog')
+  , user = require('./controller/user')
   , http = require('http')
   , path = require('path');
 
 var app = express();
 
 // all environments
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
@@ -27,8 +29,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
-console.log(routes);
 
 //列表
 app.get('/', blog.list);
@@ -51,6 +51,12 @@ app.get('/note', blog.list);
 app.get('/post', blog.post);
 app.post('/post', blog.postSave);
 app.get('/blog/edit/:id',blog.edit);
+
+//登录注册
+app.get('/signin',user.login);
+app.get('/signup',user.register);
+app.post('/signup',user.postRegister);
+app.get('/password_reset',user.password_reset);
 
 
 

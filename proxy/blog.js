@@ -2,7 +2,6 @@ var models = require('../models');
 var Blog = models.Blog;
 var utility = require('utility');
 
-
 /**
   *   博客列表
   */
@@ -20,20 +19,34 @@ exports.getQueryList = function(param, opt, callback){
 	});
 };
 
-exports.getBlogById = function(blogId, callback){
-	Blog.findOne({_id : blogId},function(docs,arg1){
-		return callback(docs,arg1);
+exports.getBlogById = function(blog_id, callback){
+	Blog.findOne({_id : blog_id},function(err,docs){
+		Blog.update({_id: blog_id},{visit_count : docs.visit_count + 1},{},function(err1,docs1){
+
+		});
+		return callback(err,docs);
 	});
 }
 
 /**
-  *   保存
+  *    保存
   */
-exports.save = function(title, content, callback){
+exports.save = function(info, callback){
 	var blog = new Blog();
-	blog.title = title;
-	blog.content = content;
+	blog.title = info.title;
+	blog.content = info.content;
 	blog.save(callback);
+}
+
+/**
+ *    修改
+ */
+exports.update = function(blog_id,info,callback){
+	var blog = {};
+	blog.title = info.title;
+	blog.content = info.content;
+
+	Blog.update({_id:blog_id},blog,{},callback);		
 }
 
 exports.remove = function(blog_id, callback){
