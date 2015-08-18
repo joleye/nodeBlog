@@ -6,6 +6,7 @@ var utility = require('utility');
 var BlogSchema = new Schema({
   title: { type : String},
   content: { type : String},
+  content_html : {type : String},
   post_time : {type : Date, default: Date.now},
   author : {type : String},
   reply_count: { type: Number, default: 0 },

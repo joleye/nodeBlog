@@ -1,5 +1,6 @@
 <% include header.html %>
-
+<link rel="stylesheet" type="text/css" href="/public/mdeditor/css/editormd.min.css" />
+<link rel="stylesheet" type="text/css" href="/public/codemirror/codemirror.min.css" /> 
 <form class="form-horizontal" action="/post" method="POST">
 <%if(typeof(_id) !== 'undefined'){%>
 <input type="hidden" name="blog_id" value="<%=_id%>"/>
@@ -8,16 +9,88 @@
 <div class="alert alert-<%=result ? 'success' : 'warning'%>" role="alert"><%=msg%></div>
 <%}%>
 <div class="form-group">
-    <label for="title">标题</label>
-    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<%=title?title:''%>">
+    <label for="title" class="control-label col-sm-2">标题</label>
+    <div class="col-sm-8">
+    	<input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<%=title?title:''%>">
+    </div>
   </div>
 
 <div class="form-group">
-    <label for="content">内容</label>
-    <textarea type="text" class="form-control" style="height:200px;" id="content" name="content" placeholder="Enter content"><%=content?content:''%></textarea>
+    <label for="content" class="control-label col-sm-2">内容</label>
+    <div class="col-sm-10">
+    	<textarea type="text" class="form-control" style="display:none;" id="md_content" ><%=content?content:''%></textarea>
+    	<div id="content"></div>
+    </div>
   </div>
-
-<button type="submit" class="btn btn-default">提交</button>
+  <div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-6">
+  		<button type="submit" class="btn btn-success">提交</button>
+  	</div>
+  </div>
 </form>
 
+<script type="text/javascript">
+var deps = [
+                "editormd", 
+                //"/public/mdeditor/languages/en.js", 
+                "/public/mdeditor/plugins/link-dialog/link-dialog.js",
+                "/public/mdeditor/plugins/reference-link-dialog/reference-link-dialog.js",
+                "/public/mdeditor/plugins/image-dialog/image-dialog.js",
+                "/public/mdeditor/plugins/code-block-dialog/code-block-dialog.js",
+                "/public/mdeditor/plugins/table-dialog/table-dialog.js",
+                "/public/mdeditor/plugins/emoji-dialog/emoji-dialog.js",
+                "/public/mdeditor/plugins/goto-line-dialog/goto-line-dialog.js",
+                "/public/mdeditor/plugins/help-dialog/help-dialog.js",
+                "/public/mdeditor/plugins/html-entities-dialog/html-entities-dialog.js", 
+                "/public/mdeditor/plugins/preformatted-text-dialog/preformatted-text-dialog.js"
+            ];
+            
+            var testEditor;
+                
+            require(deps, function(editormd) {
+                
+                // if enable codeFold
+                // or <link rel="stylesheet" href="../lib/codemirror/addon/fold/foldgutter.css" />
+                editormd.loadCSS("/public/codemirror/addon/fold/foldgutter");
+                
+                 testEditor = editormd("content", {
+                        width: "100%",
+                        height: 640,
+                        path : '/public/',
+                        markdown : $('#md_content').val(),
+                        codeFold : true,
+                        searchReplace : true,
+                        saveHTMLToTextarea : true,                // 保存HTML到Textarea
+                        htmlDecode : "style,script,iframe|on*",       // 开启HTML标签解析，为了安全性，默认不开启    
+                        emoji : true,
+                        taskList : true,
+                        tex : true,
+                        tocm            : true,         // Using [TOCM]
+                        autoLoadModules : false,
+                        previewCodeHighlight : true,
+                        flowChart : true,
+                        sequenceDiagram : true,
+                        //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+                        //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+                        //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+                        //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+                        //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+                        imageUpload : true,
+                        imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                        imageUploadURL : "./php/upload.php",
+                        onload : function() {
+                            //console.log('onload', this);
+                            //this.fullscreen();
+                            //this.unwatch();
+                            //this.watch().fullscreen();
+
+                            //this.setMarkdown("#PHP");
+                            //this.width("100%");
+                            //this.height(480);
+                            //this.resize("100%", 640);
+                        }
+                    });
+            });
+
+</script>
 <% include footer.html %>

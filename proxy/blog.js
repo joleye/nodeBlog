@@ -7,7 +7,7 @@ var utility = require('utility');
   */
 exports.getQueryList = function(param, opt, callback){
 
-	Blog.find(param,['_id','title','post_time'],opt,function(err,docs){
+	Blog.find(param,['_id','title','post_time','content_html','visit_count','reply_count'],opt,function(err,docs){
 		if (err) {
 		      return callback(err);
 		 }
@@ -35,6 +35,7 @@ exports.save = function(info, callback){
 	var blog = new Blog();
 	blog.title = info.title;
 	blog.content = info.content;
+	blog.content_html = info.content_html;
 	blog.save(callback);
 }
 
@@ -45,7 +46,7 @@ exports.update = function(blog_id,info,callback){
 	var blog = {};
 	blog.title = info.title;
 	blog.content = info.content;
-
+	blog.content_html = info.content_html;
 	Blog.update({_id:blog_id},blog,{},callback);		
 }
 

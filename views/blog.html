@@ -19,6 +19,13 @@
 		<span class="col-sm-4">
 		<%=blogs[i].post_time_friendly%>
 		</span>
+
+		<div class="detail">
+		<%-blogs[i].content%>
+		</div>
+
+		<span class="visit">阅读(<%=blogs[i].visit_count%>)</span>
+		<span class="reply">评论(<%=blogs[i].reply_count%>)</span>
 	</div>
 <%}%>
 </div>

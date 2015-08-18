@@ -7,7 +7,7 @@ exports.list = function(req, res){
 	blog.getQueryList({}, {},function(err, list){
 
 		for(var i=0;i<list.length;i++){
-			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,false);
+			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,true);
 		}
 
 		res.render('blog', {
@@ -42,7 +42,8 @@ exports.post = function(req, res){
 exports.postSave = function(req, res){
 	var param = {
 		title :  req.body.title,
-		content : req.body.content
+		content : req.body['content-markdown-doc'],
+		content_html : req.body['content-html-code']
 	};
 
 	if(param.title != '' && param.content != ''){
