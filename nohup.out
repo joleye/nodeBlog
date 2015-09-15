@@ -1,0 +1,11 @@
+
+Running node-supervisor with
+  program 'app.js'
+  --watch '.'
+  --extensions 'node,js'
+  --exec 'node'
+
+Starting child process with 'node app.js'
+Watching directory '/home/joleye/git/nodeBlog' for changes.
+Express server listening on port 3000
+Sending SIGTERM to child...

@@ -1,6 +1,5 @@
-<% include header.html %>
-<link rel="stylesheet" type="text/css" href="/public/mdeditor/css/editormd.min.css" />
-<link rel="stylesheet" type="text/css" href="/public/codemirror/codemirror.min.css" /> 
+<link rel="stylesheet" type="text/css" href="/mdeditor/css/editormd.min.css" />
+<link rel="stylesheet" type="text/css" href="/codemirror/codemirror.min.css" /> 
 <form class="form-horizontal" action="/post" method="POST">
 <%if(typeof(_id) !== 'undefined'){%>
 <input type="hidden" name="blog_id" value="<%=_id%>"/>
@@ -33,16 +32,16 @@
 var deps = [
                 "editormd", 
                 //"/public/mdeditor/languages/en.js", 
-                "/public/mdeditor/plugins/link-dialog/link-dialog.js",
-                "/public/mdeditor/plugins/reference-link-dialog/reference-link-dialog.js",
-                "/public/mdeditor/plugins/image-dialog/image-dialog.js",
-                "/public/mdeditor/plugins/code-block-dialog/code-block-dialog.js",
-                "/public/mdeditor/plugins/table-dialog/table-dialog.js",
-                "/public/mdeditor/plugins/emoji-dialog/emoji-dialog.js",
-                "/public/mdeditor/plugins/goto-line-dialog/goto-line-dialog.js",
-                "/public/mdeditor/plugins/help-dialog/help-dialog.js",
-                "/public/mdeditor/plugins/html-entities-dialog/html-entities-dialog.js", 
-                "/public/mdeditor/plugins/preformatted-text-dialog/preformatted-text-dialog.js"
+                "/mdeditor/plugins/link-dialog/link-dialog.js",
+                "/mdeditor/plugins/reference-link-dialog/reference-link-dialog.js",
+                "/mdeditor/plugins/image-dialog/image-dialog.js",
+                "/mdeditor/plugins/code-block-dialog/code-block-dialog.js",
+                "/mdeditor/plugins/table-dialog/table-dialog.js",
+                "/mdeditor/plugins/emoji-dialog/emoji-dialog.js",
+                "/mdeditor/plugins/goto-line-dialog/goto-line-dialog.js",
+                "/mdeditor/plugins/help-dialog/help-dialog.js",
+                "/mdeditor/plugins/html-entities-dialog/html-entities-dialog.js", 
+                "/mdeditor/plugins/preformatted-text-dialog/preformatted-text-dialog.js"
             ];
             
             var testEditor;
@@ -51,12 +50,12 @@ var deps = [
                 
                 // if enable codeFold
                 // or <link rel="stylesheet" href="../lib/codemirror/addon/fold/foldgutter.css" />
-                editormd.loadCSS("/public/codemirror/addon/fold/foldgutter");
+                editormd.loadCSS("/codemirror/addon/fold/foldgutter");
                 
                  testEditor = editormd("content", {
                         width: "100%",
                         height: 640,
-                        path : '/public/',
+                        path : '/',
                         markdown : $('#md_content').val(),
                         codeFold : true,
                         searchReplace : true,
@@ -93,4 +92,3 @@ var deps = [
             });
 
 </script>
-<% include footer.html %>

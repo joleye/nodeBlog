@@ -1,9 +1,7 @@
-<% include header.html %>
-
 <div class="panel">
     <div class="header">
       <ul class="breadcrumb">
-        <li><a href="/">主页</a><span class="divider">/</span></li>
+        <li><a href="/">主页</a></li>
         <li class="active">注册</li>
       </ul>
     </div>
@@ -26,7 +24,7 @@
   <div class="form-group">
     <label for="repassword" class="col-sm-3 control-label">重复密码</label>
     <div class="col-sm-7">
-    <input type="password" class="form-control" id="repassword" name="repassword" placeholder="密码" check-rule="require" check-warning="错误" check-correct="正确">
+    <input type="password" class="form-control" id="repassword" name="repassword" placeholder="密码" check-rule="repwd" check-warning="@repwdmsg" check-correct="正确">
     </div>
   </div>
   <div class="form-group">
@@ -38,7 +36,23 @@
 </div>
 
 <script type="text/javascript">
+  var repwdmsg = '';
   require(['jquery','ye_check'],function($,blog){
+    ye.extend({
+      repwd : function(id, val){
+          if(val == ''){
+             repwdmsg = '不能为空';
+             return false;
+          }
+
+          if(val =='' || val != $('#password').val()){
+            repwdmsg = '两次输入的密码不相同';
+            return false;
+          }else{
+            return true;
+          }
+      }
+    });
     $('#btn-login').click(function(){
 
         ye.verify('.form-horizontal').do_post({
@@ -53,5 +67,3 @@
     
   });
 </script>
-
-<% include footer.html %>

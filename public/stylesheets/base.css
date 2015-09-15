@@ -71,12 +71,7 @@ body {
 
 #notify{
 	margin-top:  20px;
-	padding: 100px;
-}
-
-.panel .row{
-	padding : 10px;
-	border-top: 1px solid #f0f0f0;
+	padding: 20px 10px;
 }
 
 .bar{
@@ -87,4 +82,58 @@ body {
 #login-form{
 	width:450px;
 	margin:auto;
+}
+
+.container{
+	position: relative;
+}
+
+.post-list {
+	float : left;
+	margin-right: 320px;
+}
+
+.post-list .post-foot{
+	color : #555;
+}
+
+.post-list .item{
+	padding : 10px;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.post-list h3{
+	height: 30px;
+}
+
+.post-list .detail{
+	color: #333;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.sidebar{
+	width : 300px;
+	float: right;
+	background: #f0f0f0;
+	position: absolute;
+	top : 30px;
+	right: 0;
+}
+
+.sidebar .side-item{
+	margin : 10px;
+}
+
+.sidebar .side-item ul{
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+
+.sidebar .side-item li{
+	margin: 0;
+	list-style: none;
+	padding: 8px 0 8px 15px;
+	border-bottom: 1px dotted #ccc;
 }

@@ -8,10 +8,10 @@ exports.list = function(req, res){
 
 		for(var i=0;i<list.length;i++){
 			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,true);
+			list[i].content_html_head = FormatHelper.format_body_head(list[i].content_html);
 		}
 
 		res.render('blog', {
-			title : 'home-NodeBlog',
 			blogs : list 
 		});
 	});
@@ -28,7 +28,7 @@ exports.detail = function(req,res){
 		}else{
 			blog.post_time_friendly = FormatHelper.format_date(blog.post_time,true);
 
-			res.render('blog/index', blog);
+			res.render('blog/detail', blog);
 		}
 	});
 };

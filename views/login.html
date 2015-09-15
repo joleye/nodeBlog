@@ -1,26 +1,24 @@
-<% include header.html %>
-
 <div class="panel">
     <div class="header">
       <ul class="breadcrumb">
-        <li><a href="/">主页</a><span class="divider">/</span></li>
+        <li><a href="/">主页</a></li>
         <li class="active">登录</li>
       </ul>
     </div>
   </div>
 
 <div class="panel">
-<form id="login-form" class="form-horizontal">
+<form id="login-form" class="form-horizontal" method="post">
   <div class="form-group">
     <label for="username" class="col-sm-3 control-label">用户名或邮箱</label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="username" placeholder="用户名或邮箱">
+    <input type="text" class="form-control" id="username" name="username" placeholder="用户名或邮箱" check-rule="require" check-warning="必填项" check-correct="填写正确">
     </div>
   </div>
   <div class="form-group">
     <label for="password" class="col-sm-3 control-label">密码</label>
     <div class="col-sm-7">
-    <input type="password" class="form-control" id="password" placeholder="密码"> <a href="/password_reset">忘记密码?</a>
+    <input type="password" class="form-control" name="password" id="password" placeholder="密码" check-rule="require" check-warning="必填项" check-correct="填写正确"> <a class="" href="/password_reset">忘记密码?</a>
     </div>
   </div>
 <div class="form-group">
@@ -33,12 +31,32 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-10">
-      <button type="submit" class="btn btn-primary">登录</button>
+    <div class="col-sm-offset-3 col-sm-3">
+      <button type="button" class="btn btn-primary" id="login-btn">登录</button>
     </div>
+    <label class="control-label text-left" id="login-msg"></label>
   </div>
   
 </form>
 </div>
+<script type="text/javascript">
+  require(['ye_check'],function(){
+      $('#login-btn').click(function(){
+        ye.verify('#login-form').do_post({
+          btn : { name : 'login-btn'},
+          success : function(res){
+            $('#login-msg').html(res.msg);
+            if(res.status){
+              $('#login-msg').removeClass('derr').addClass('dright');
+                location.href = '/';
+            }else{
+              $('#login-msg').removeClass('dright').addClass('derr');
+            }
+            
+          }
+        });
+      });
+    
+  });
 
-<% include footer.html %>
+</script>

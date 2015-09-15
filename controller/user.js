@@ -1,4 +1,7 @@
 var user = require('../proxy').User;
+var utility = require('utility');
+var mongoose = require('mongoose');
+var UserModel = mongoose.model('User');
 /*
  * GET users listing.
  */
@@ -12,6 +15,23 @@ exports.login = function(req, res){
   	res.render("login",{});
 };
 
+exports.postLogin = function(req, res){
+	var username = req.body.username;
+	var pwd = req.body.password;
+	
+	var info = user.getUserByName(username, function(err, docs){
+
+		if(docs != null && docs.password == utility.md5(pwd)){
+
+			
+			return res.json({status : true, msg : '登录成功'});
+		}else{
+			return res.json({status : false, msg : '密码错误'});
+		}
+
+	});
+};
+
 exports.register = function(req, res){
 	res.render("register",{});
 };
@@ -22,7 +42,7 @@ exports.postRegister = function(req, res){
 	}else{
 		var param = {
 			email : req.body.email,
-			password : req.body.password
+			password : utility.md5(req.body.password)
 		};
 
 		user.save(param,function(err){
@@ -40,4 +60,13 @@ exports.postRegister = function(req, res){
 
 exports.password_reset = function(req, res){
   	res.render("password_reset",{});
+};
+
+
+exports.auth = function(req, res){
+
+
+	user = res.locals.current_user = req.session.user = '111';//new UserModel(user);
+
+	
 };
