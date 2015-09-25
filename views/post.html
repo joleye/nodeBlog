@@ -1,5 +1,13 @@
 <link rel="stylesheet" type="text/css" href="/mdeditor/css/editormd.min.css" />
 <link rel="stylesheet" type="text/css" href="/codemirror/codemirror.min.css" /> 
+<div class="panel">
+    <div class="header">
+      <ul class="breadcrumb">
+        <li><a href="/">主页</a></li>
+        <li class="active">发布</li>
+      </ul>
+    </div>
+ </div>
 <form class="form-horizontal" action="/post" method="POST">
 <%if(typeof(_id) !== 'undefined'){%>
 <input type="hidden" name="blog_id" value="<%=_id%>"/>
@@ -8,15 +16,13 @@
 <div class="alert alert-<%=result ? 'success' : 'warning'%>" role="alert"><%=msg%></div>
 <%}%>
 <div class="form-group">
-    <label for="title" class="control-label col-sm-2">标题</label>
-    <div class="col-sm-8">
-    	<input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<%=title?title:''%>">
+    <div>
+    	<input type="text" class="form-control" id="title" name="title" placeholder="这里输入标题" value="<%=title?title:''%>">
     </div>
   </div>
 
 <div class="form-group">
-    <label for="content" class="control-label col-sm-2">内容</label>
-    <div class="col-sm-10">
+    <div>
     	<textarea type="text" class="form-control" style="display:none;" id="md_content" ><%=content?content:''%></textarea>
     	<div id="content"></div>
     </div>
@@ -76,7 +82,7 @@ var deps = [
                         //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
                         imageUpload : true,
                         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                        imageUploadURL : "./php/upload.php",
+                        imageUploadURL : "./upload",
                         onload : function() {
                             //console.log('onload', this);
                             //this.fullscreen();

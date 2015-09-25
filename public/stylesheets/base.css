@@ -137,3 +137,8 @@ body {
 	padding: 8px 0 8px 15px;
 	border-bottom: 1px dotted #ccc;
 }
+
+.form-horizontal .form-group{
+	margin-left : 0;
+	margin-right: 0;
+}
