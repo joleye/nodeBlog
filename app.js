@@ -32,8 +32,12 @@ app.locals._layoutFile = 'layout.html';
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// 设置 Cookie
+app.use(cookieParser('nodeBlog_'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 
 // set static, dynamic helpers
 _.extend(app.locals, {
@@ -41,7 +45,8 @@ _.extend(app.locals, {
   //Loader: Loader
 });
 
-//app.use(user.auth);
+//middileware 用户认证
+app.use(user.auth);
 
 //列表
 app.get('/', blog.list);
@@ -70,6 +75,7 @@ app.get('/signin',user.login);
 app.post('/signin', user.postLogin);
 app.get('/signup',user.register);
 app.post('/signup',user.postRegister);
+app.get('/signout', user.signout);
 app.get('/password_reset',user.password_reset);
 
 
@@ -82,21 +88,13 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (!config.debug) {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}else{
+// error handler
+if (config.debug) {
+  app.use(errorhandler());
+} else {
   app.use(function (err, req, res, next) {
-    return res.send(500, '500 status');
+    console.error('server 500 error:', err);
+    return res.status(500).send('500 status');
   });
 }
 

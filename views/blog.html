@@ -13,21 +13,3 @@
 	</div>
 <%}%>
 </div>
-
-<aside class="sidebar">
-	<section class="side-item">
-	<h2>推荐文章</h2>
-	<ul>
-	<%for(var i in blogs){%>
-		<li><a href="blog/<%=blogs[i]._id%>"><%=blogs[i].title!='' ? blogs[i].title : 'undefined'%></a></li>
-		<%}%>
-	</ul>
-	</section>
-
-	<section class="side-item">
-	<h2>友情连接</h2>
-	<ul>
-		<li><a href="http://www.talkdata.com.cn" target="_blank">大数据官网</a></li>
-	</ul>
-	</section>
-</aside>

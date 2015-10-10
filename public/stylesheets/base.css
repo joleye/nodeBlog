@@ -60,6 +60,37 @@ body {
 	margin-top: 10px;
 }
 
+#bd{
+	margin-right: 310px;
+}
+
+.sidebar{
+	width : 300px;
+	float: right;
+	background: #f0f0f0;
+	position: absolute;
+	top : 0px;
+	right: 15px;
+	border-radius : 4px;
+}
+
+.sidebar .side-item{
+	margin : 10px;
+}
+
+.sidebar .side-item ul{
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+
+.sidebar .side-item li{
+	margin: 0;
+	list-style: none;
+	padding: 8px 0 8px 15px;
+	border-bottom: 1px dotted #ccc;
+}
+
 .title{
 	padding: 10px;
 	border-bottom: 1px #ccc solid;
@@ -80,7 +111,7 @@ body {
 }
 
 #login-form{
-	width:450px;
+	width:500px;
 	margin:auto;
 }
 
@@ -89,8 +120,6 @@ body {
 }
 
 .post-list {
-	float : left;
-	margin-right: 320px;
 }
 
 .post-list .post-foot{
@@ -110,32 +139,6 @@ body {
 	color: #333;
 	clear: both;
 	margin-bottom: 20px;
-}
-
-.sidebar{
-	width : 300px;
-	float: right;
-	background: #f0f0f0;
-	position: absolute;
-	top : 30px;
-	right: 0;
-}
-
-.sidebar .side-item{
-	margin : 10px;
-}
-
-.sidebar .side-item ul{
-	list-style: none;
-	margin:0;
-	padding: 0;
-}
-
-.sidebar .side-item li{
-	margin: 0;
-	list-style: none;
-	padding: 8px 0 8px 15px;
-	border-bottom: 1px dotted #ccc;
 }
 
 .form-horizontal .form-group{

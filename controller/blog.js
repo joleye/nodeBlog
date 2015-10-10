@@ -12,7 +12,8 @@ exports.list = function(req, res){
 		}
 
 		res.render('blog', {
-			blogs : list 
+			blogs : list,
+			topBlogs : list 
 		});
 	});
 
@@ -36,6 +37,7 @@ exports.detail = function(req,res){
 exports.post = function(req, res){
 	var blog = new Blog();
 	blog._id = undefined;
+	blog.sidebar = 1;
 	res.render('post', blog);
 };
 
@@ -91,6 +93,7 @@ exports.edit = function(req, res){
 		if(!blog){
 			res.render('notify',{result : false, msg : '该文章不存在!'})
 		}else
+			blog.sidebar = 1;
 			res.render('post', blog);
 		});
 	}

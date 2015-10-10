@@ -21,9 +21,9 @@ exports.getQueryList = function(param, opt, callback){
 
 exports.getBlogById = function(blog_id, callback){
 	Blog.findOne({_id : blog_id},function(err,docs){
-		Blog.update({_id: blog_id},{visit_count : docs.visit_count + 1},{},function(err1,docs1){
-
-		});
+		if(!err)
+			Blog.update({_id: blog_id},{visit_count : docs.visit_count + 1},{},function(err1,docs1){});
+		
 		return callback(err,docs);
 	});
 }
