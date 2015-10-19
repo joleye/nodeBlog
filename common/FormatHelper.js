@@ -35,12 +35,16 @@ exports.format_date = function (date, friendly) {
 };
 
 exports.format_body_head = function(html){
-    var tmp = html.replace(/<.+?>/g,'');
+    if(html != null && typeof html != 'undefined'){
+      var tmp = html.replace(/<.+?>/g,'');
 
-    if(tmp.length > 200)
-      return tmp.substr(0, 200) + '...';
-    else
-      return tmp;
+      if(tmp.length > 200)
+        return tmp.substr(0, 200) + '...';
+      else
+        return tmp;  
+    }else{
+      return '';
+    }
 };
 
 
