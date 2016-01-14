@@ -5,6 +5,7 @@
 <title><%=typeof(title) != 'undefined' ? title + ' - ' : ''%><%=typeof(config.sitename) !='undefined' ? config.sitename : ''%></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-theme.min.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
 <script type="text/javascript"  src="/lib/js/require.js"></script>
 <script type="text/javascript" src="/js/main.js" ></script>
@@ -20,8 +21,9 @@
 			<ul class="nav navbar-nav">
 				<li><p class="navbar-text">
 					<%if(typeof current_user != 'undefined'){%>
-						你好 <%=current_user%>，<a href="javascript:;" class="signout" onclick="location.href='/signout?ret_url='+escape(location.href)">退出</a>
-						<li><a href="/settings/profile">设置</a></li>
+						<span class="glyphicon glyphicon-user"></span> <%=current_realname ? current_realname : current_user%> 
+						<a href="javascript:;" class="signout" onclick="location.href='/signout?ret_url='+escape(location.href)"><span class="glyphicon glyphicon-log-out"></span> 退出</a>
+						<li><a href="/settings/profile"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
 					<%}else{%>
 						<a href="/signin">登录</a> <a href="/signup">注册</a>
 					<%}%>
@@ -44,7 +46,7 @@
 <%if(typeof sidebar == 'undefined'){%></div><%}%>
 
 <%if(typeof sidebar == 'undefined'){%>
-<aside class="sidebar">
+	<aside class="sidebar">
 	<%if(typeof topBlogs != 'undefined'){%>
 	<section class="side-item">
 	<h2>推荐文章</h2>

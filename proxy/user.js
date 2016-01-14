@@ -10,6 +10,9 @@ exports.save = function(info, callback){
 	user.username = info.email;
 	user.email = info.email;
 	user.password = info.password;
+	user.realname = info.realname;
+	user.gender = info.gender;
+	user.office = info.office;
 	user.save(callback);
 }
 

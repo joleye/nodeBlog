@@ -5,6 +5,27 @@ body {
 	padding-top: 50px;
 }
 
+@media(min-width : 768px) {
+	.navbar {
+		min-height : 40px
+	}
+	.navbar-nav > li > a {
+		font-size : 14px;
+		padding-top : 11px;
+		padding-bottom : 11px
+	}
+	.navbar-brand {
+		padding-top : 0;
+		padding-bottom : 0;
+		line-height : 42px;
+		height : 42px
+	}
+	.navbar-text{
+		margin-top: 10px;
+  		margin-bottom: 10px;
+	}
+}
+
 .blank10 {
 	height: 10px;
 }
@@ -33,6 +54,19 @@ body {
 
 .auto-field {
 	display: none;
+}
+
+.font-normal{
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.margin-right-20{
+	margin-right: 20px;
+}
+
+.pd-0{
+	padding-left: 0;
 }
 
 .pageBox{ margin:0 10px;}
@@ -144,4 +178,34 @@ body {
 .form-horizontal .form-group{
 	margin-left : 0;
 	margin-right: 0;
+}
+
+.setting-form{
+	margin-top: 10px;
+}
+
+.setting-form .text-left{
+	text-align : left;
+}
+
+.menu{
+
+}
+
+.menu a{
+	display: block;
+	padding: 8px 10px;
+  	text-shadow: 0 1px 0 #fff;
+  	border-bottom: 1px solid #eee;
+  	position: relative;
+}
+
+.menu a.active:before{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 2px;
+	content: "";
+	background-color: #d26911;
 }

@@ -1,11 +1,11 @@
 var user = require('../proxy').User;
 var utility = require('utility');
-var mongoose = require('mongoose');
-var UserModel = mongoose.model('User');
+var models = require('../models');
+var UserModel = models.User;
+
 /*
  * GET users listing.
  */
-
 exports.user = function(req, res){
   	res.send("respond with a resource");
 };
@@ -18,10 +18,10 @@ exports.postLogin = function(req, res){
 	var username = req.body.username;
 	var pwd = req.body.password;
 	var remember = req.body['remember-password'];
-	
 	var info = user.getUserByName(username, function(err, docs){
-
-		if(docs != null && docs.password == utility.md5(pwd)){
+		if(docs == null){
+			return res.json({status : false, msg : '用户名不存在! '});
+		}else if(docs.password == utility.md5(pwd)){
 			//req.session.current_user = docs;
 			if(remember == 1){
 				res.cookie('user',username, {maxAge : 60*60*24*365*10*1000});	
@@ -32,7 +32,6 @@ exports.postLogin = function(req, res){
 		}else{
 			return res.json({status : false, msg : '密码错误'});
 		}
-
 	});
 };
 
@@ -80,7 +79,28 @@ exports.password_reset = function(req, res){
 };
 
 exports.auth = function(req, res, next){
-	var user = res.locals.current_user = typeof req.cookies != 'undefined' &&  req.cookies['user'] != ''?  req.cookies['user'] : undefined;//new UserModel(user);
-
-	next();
+	var member_url = ['/settings/*','/post'];
+	var username = res.locals.current_user = typeof req.cookies != 'undefined' &&  req.cookies['user'] != ''?  req.cookies['user'] : undefined;
+	if(username){
+		user.getUserByName(username, function(err, docs){
+			res.locals.current_realname = docs.realname;
+			next();
+		});
+	}else{
+		var url = req.originalUrl;
+		if (check_filter(member_url,url)){
+			return res.redirect("/signin");
+		}
+		next();
+	}
 };
+
+function check_filter(arrs, url){
+	for(var i = 0; i< arrs.length; i++){
+		var reg = new RegExp('^'+arrs[i],'g');
+		if(reg.test(url)){
+			return true;
+		}
+	};
+	return false;
+}

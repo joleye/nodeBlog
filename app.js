@@ -5,6 +5,7 @@
 
 var blog = require('./controller/blog');
 var user = require('./controller/user');
+var settings = require('./controller/settings');
 var express = require('express');
 var path = require('path');
 var Loader = require('loader');
@@ -63,7 +64,11 @@ app.get('/note', blog.list);
 
 //用户信息
 //app.get('/users', users.list);
-//app.get('/proinfo', users.proinfo);
+app.get('/settings/profile', settings.profile);
+app.post('/settings/profile', settings.profileSave);
+
+app.get('/settings/admin', settings.admin);
+app.post('/settings/admin', settings.adminSave);
 
 //内容编辑
 app.get('/post', blog.post);

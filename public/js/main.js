@@ -6,6 +6,7 @@ require.config({
                     'bootstrap' : 'lib/bootstrap/js/bootstrap.min',
                     'ye_check' : 'js/ye.check',
                     'blog' : 'js/blog',
+                    'settings' : 'js/settings',
                     marked          : "mdeditor/lib/marked.min",
                     prettify        : "mdeditor/lib/prettify.min",
                     raphael         : "mdeditor/lib/raphael.min",

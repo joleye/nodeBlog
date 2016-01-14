@@ -4,6 +4,8 @@ var FormatHelper = require('../common/FormatHelper');
 
 exports.list = function(req, res){
 
+	console.log(getClientIp(req));
+
 	blog.getQueryList({}, {},function(err, list){
 
 		for(var i=0;i<list.length;i++){
@@ -18,6 +20,13 @@ exports.list = function(req, res){
 	});
 
 };
+
+function getClientIp(req) {
+        return req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress;
+    };
 
 /*显示博客内容*/
 exports.detail = function(req,res){

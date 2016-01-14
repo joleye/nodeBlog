@@ -1,0 +1,108 @@
+<script type="text/javascript">
+require(['base','settings','ye_check'], function(b,a) {
+	$(function(){
+		var purview = $('input[name=purview_text]').val();
+		if(purview){
+			var purviews = purview.split(',');
+			if(purview.length > 0){
+				for(var i=0; i<purviews.length; i++){
+					$('input[name=purview][value='+purviews[i]+']').prop('checked', true);
+				}
+			}
+		}
+
+		$('#setting-btn').click(function(){
+		        ye.verify('.form-horizontal').do_post({
+		            method : 'ajax',//ajax模式提交
+		            btn : {
+		              name : '#setting-btn',
+		              text : 'load...'
+		            },
+		            success : function(res){
+		                $('#reg-msg').html(res.msg);
+		                if(res.status){
+		                  	$('#reg-msg').removeClass('derr').addClass('dright');
+		                }else{
+		                  	$('#reg-msg').removeClass('dright').addClass('derr');
+		                }
+		            }
+		          });
+		     
+		 });
+	});
+});
+</script>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-xs-6 col-md-3">
+	  	<%var curitem = 'profile'%>
+		  <%include menu.html%>
+	  </div>
+	  <div class="col-xs-12 col-md-9 pd-0">
+	  	<div class="panel panel-default">
+	  		<div class="panel-heading">基本资料</div>
+			<form class="form-horizontal setting-form" method="POST" action="">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用户名</label>
+					<div class="col-sm-7 control-label text-left">
+						<%=info.username%>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">真实姓名</label>
+					<div class="col-sm-3 text-left">
+						<input class="form-control" name="realname" value="<%=info.realname%>"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">性别</label>
+					<div class="col-sm-4 control-label text-left">
+					        <label class="font-normal margin-right-20">
+					          	<input type="radio" name="gender" <%if(info.gender==1){%>checked="checked"<%}%> value="1"> 男
+					        </label>
+					        <label class="font-normal margin-right-20">
+					          	<input type="radio" name="gender" <%if(info.gender==0){%>checked="checked"<%}%> value="0"> 女
+					        </label>
+					        <label class="font-normal">
+					          	<input type="radio" name="gender" <%if(info.gender==2){%>checked="checked"<%}%> value="2"> 保密
+					        </label>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">职位</label>
+					<div class="col-sm-4 text-left">
+						<input class="form-control" name="office" value="<%=info.office%>" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用户组</label>
+					<div class="col-sm-5 text-left">
+						<select class="form-control" name="group_id">
+							<option value="">--请选择--</option>
+							
+								<option value="0" <%if(info.group_id==0){%>selected="selected"<%}%>purview="">-</option>
+							
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-6">
+						<button type="button" class="btn btn-info" id="setting-btn">保存</button>
+					</div>
+				</div>
+
+				<div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <label class="control-label text-left" id="reg-msg"></label>
+				    </div>
+				  </div>
+			</form>
+		</div>
+	 </div>
+	</div>
+</div>

@@ -1,0 +1,86 @@
+<script type="text/javascript">
+var msg = '';
+require(['base','settings','ye_check'], function(b,a) {
+	$(function(){
+		ye.extend({
+			repwd : function(id, val){
+				if(ye.isEmpty(val)){
+					msg = '不能为空';
+					return false;
+				}else if(val != $('input[name=newpassword]').val()){
+					msg = '两次输入密码不一致';
+					return false;
+				}else{
+					msg = '正确';
+					return true;
+				}
+			}
+		});
+		$('#setting-btn').click(function(){
+		        ye.verify('.form-horizontal').do_post({
+		            method : 'ajax',//ajax模式提交
+		            btn : {
+		              name : '#setting-btn',
+		              text : 'load...'
+		            },
+		            success : function(res){
+		                $('#reg-msg').html(res.msg);
+		                if(res.status){
+		                  	$('#reg-msg').removeClass('derr').addClass('dright');
+		                }else{
+		                  	$('#reg-msg').removeClass('dright').addClass('derr');
+		                }
+		            }
+		          });
+		     
+		 });
+	});
+});
+</script>
+<div class="container-fluid">
+	<div class="row">
+	  <div class="col-xs-6 col-md-3">
+	  	<%var curitem = 'admin'%>
+		 <%include menu.html%>
+	  </div>
+	  <div class="col-xs-12 col-md-9 pd-0">
+	  	<div class="panel panel-default">
+	  		<div class="panel-heading">修改密码</div>
+			<form class="form-horizontal setting-form" method="POST" action="">				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">旧密码</label>
+					<div class="col-sm-4 text-left">
+						<input class="form-control" check-rule="require" check-warning="不能为空" check-correct="正确" name="password" type="password" value=""/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">新密码</label>
+					<div class="col-sm-4 text-left">
+						<input class="form-control" check-rule="require" check-warning="不能为空" check-correct="正确"  name="newpassword" type="password" value=""/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">确认新密码</label>
+					<div class="col-sm-4 text-left">
+						<input class="form-control" name="renewpassword" check-rule="repwd" check-warning="@msg" check-correct="正确"  type="password" value=""/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-6">
+						<button type="button" class="btn btn-info" id="setting-btn">保存</button>
+					</div>
+				</div>
+
+				<div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <label class="control-label text-left" id="reg-msg"></label>
+				    </div>
+				  </div>
+			</form>
+		</div>
+	 </div>
+	</div>
+</div>
