@@ -34,12 +34,12 @@ exports.format_date = function (date, friendly) {
   return year + month + '-' + day + ' ' + hour + ':' + minute;
 };
 
-exports.format_body_head = function(html){
+exports.format_body_head = function(html, len){
     if(html != null && typeof html != 'undefined'){
       var tmp = html.replace(/<.+?>/g,'');
 
-      if(tmp.length > 200)
-        return tmp.substr(0, 200) + '...';
+      if(tmp.length > len)
+        return tmp.substr(0, len) + '...';
       else
         return tmp;  
     }else{
@@ -129,4 +129,4 @@ br.subArtc = function(article,worldNum){
         unEndTagsCount--;  
     }  
     return result.join("");  
-};  
+};

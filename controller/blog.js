@@ -1,21 +1,24 @@
 var blog = require('../proxy').Blog;
 var Blog = require('../models').Blog;
+var config = require('../config');
 var FormatHelper = require('../common/FormatHelper');
+var Pagination = require('../common/Pagination');
 
 exports.list = function(req, res){
+	var page = req.query.page ? parseInt(req.query.page) : 1;
+	var start = page > 1 ? (page -1) * config.pagesize : 0;
 
-	console.log(getClientIp(req));
-
-	blog.getQueryList({}, {},function(err, list){
-
+	blog.getQueryList({}, {skip : start, limit : config.pagesize},function(err, list){
 		for(var i=0;i<list.length;i++){
 			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,true);
-			list[i].content_html_head = FormatHelper.format_body_head(list[i].content_html);
+			list[i].content_html_head = FormatHelper.format_body_head(list[i].content_html, config.listBlogFontLen);
 		}
 
-		res.render('blog', {
-			blogs : list,
-			topBlogs : list 
+		blog.getQueryListCount({}, function(err, count){
+			res.render('blog', {
+				page : Pagination.get('?page={1}', page, config.pagesize, count),
+				blogs : list
+			});
 		});
 	});
 
@@ -54,7 +57,8 @@ exports.postSave = function(req, res){
 	var param = {
 		title :  req.body.title,
 		content : req.body['content-markdown-doc'],
-		content_html : req.body['content-html-code']
+		content_html : req.body['content-html-code'],
+		tag : req.body.tag
 	};
 
 	if(param.title != '' && param.content != ''){

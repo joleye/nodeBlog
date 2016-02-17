@@ -12,4 +12,35 @@
 		</div>
 	</div>
 <%}%>
+
+<nav>
+  <ul class="pagination">
+    <%if(page.prev){%>
+    <li>
+      <a href="<%=page.prev%>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <%}%>
+    <%if(page.one){%>
+    <li><a href="<%=page.one.url%>"><%=page.one.index%></a></li>
+    <li><span>···</span></li>
+    <%}%>
+    <%for(var i in page.item){var item = page.item[i];%>
+    <li<%if(page.currentpage==item.page){%> class="active"<%}%>><a href="<%=item.url%>"><%=item.page%></a></li>
+    <%}%>
+    <%if(page.last){%>
+    <li><span>···</span></li>
+    <li><a href="<%=page.last.url%>"><%=page.last.index%></a></li>
+    <%}%>
+    <%if(page.next){%>
+    <li>
+      <a href="<%=page.next%>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <%}%>
+  </ul>
+</nav>
+
 </div>

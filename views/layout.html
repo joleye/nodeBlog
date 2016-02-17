@@ -47,19 +47,30 @@
 
 <%if(typeof sidebar == 'undefined'){%>
 	<aside class="sidebar">
+	<%if(typeof catelogs != 'undefined'){%>
+	<section class="side-item">
+	<h3>文章分类</h3>
+	<ul>
+	<%for(var i in catelogs){%>
+		<li><a href="/tag/<%=catelogs[i].tagName%>"><%=catelogs[i].tagName!='' ? catelogs[i].tagName : 'undefined'%></a> <span><%=catelogs[i].blogCnt%></span></li>
+		<%}%>
+	</ul>
+	</section>
+	<%}%>
+
 	<%if(typeof topBlogs != 'undefined'){%>
 	<section class="side-item">
-	<h2>推荐文章</h2>
+	<h3>推荐文章</h3>
 	<ul>
 	<%for(var i in topBlogs){%>
-		<li><a href="blog/<%=topBlogs[i]._id%>"><%=topBlogs[i].title!='' ? topBlogs[i].title : 'undefined'%></a></li>
+		<li><a href="/blog/<%=topBlogs[i]._id%>"><%=topBlogs[i].title!='' ? topBlogs[i].title : 'undefined'%></a></li>
 		<%}%>
 	</ul>
 	</section>
 	<%}%>
 
 	<section class="side-item">
-	<h2>友情连接</h2>
+	<h3>友情连接</h3>
 	<ul>
 		<li><a href="http://www.talkdata.com.cn" target="_blank">大数据官网</a></li>
 	</ul>

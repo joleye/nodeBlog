@@ -6,6 +6,7 @@
 var blog = require('./controller/blog');
 var user = require('./controller/user');
 var settings = require('./controller/settings');
+var comm = require('./controller/comm');
 var express = require('express');
 var path = require('path');
 var Loader = require('loader');
@@ -48,6 +49,9 @@ _.extend(app.locals, {
 
 //middileware 用户认证
 app.use(user.auth);
+
+//公用加载
+app.use(comm.datasource);
 
 //列表
 app.get('/', blog.list);
