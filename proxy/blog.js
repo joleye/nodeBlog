@@ -6,7 +6,7 @@ var utility = require('utility');
   *   博客列表
   */
 exports.getQueryList = function(param, opt, callback){
-	var fields = ['_id','title','post_time','content_html','visit_count','reply_count'];
+	var fields = ['_id','title','post_time','content_html','visit_count','reply_count','author'];
 	if(opt.fields){
 		fields = opt.fields;
 	}
@@ -44,6 +44,7 @@ exports.save = function(info, callback){
 	blog.title = info.title;
 	blog.content = info.content;
 	blog.content_html = info.content_html;
+	blog.author = info.author;
 	blog.tag = info.tag;
 	blog.save(callback);
 }
@@ -57,6 +58,7 @@ exports.update = function(blog_id,info,callback){
 	blog.content = info.content;
 	blog.content_html = info.content_html;
 	blog.tag = info.tag;
+	blog.author = info.author;
 	Blog.update({_id:blog_id},blog,{},callback);		
 }
 

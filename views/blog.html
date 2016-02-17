@@ -6,6 +6,7 @@
 			<%-blogs[i].content_html_head%>
 		</div>
 		<div class="post-foot">
+			<span class="author">作者(<a href="user/<%=blogs[i].author%>"><%=blogs[i].author%></a>)</span>
 			<span class="visit">阅读(<%=blogs[i].visit_count%>)</span>
 			<span class="reply">评论(<%=blogs[i].reply_count%>)</span>
 			<span class="time">发布于 <%=blogs[i].post_time_friendly%></span>
@@ -26,9 +27,10 @@
     <li><a href="<%=page.one.url%>"><%=page.one.index%></a></li>
     <li><span>···</span></li>
     <%}%>
+    <%if(page.pagecount>0){%>
     <%for(var i in page.item){var item = page.item[i];%>
     <li<%if(page.currentpage==item.page){%> class="active"<%}%>><a href="<%=item.url%>"><%=item.page%></a></li>
-    <%}%>
+    <%}}%>
     <%if(page.last){%>
     <li><span>···</span></li>
     <li><a href="<%=page.last.url%>"><%=page.last.index%></a></li>

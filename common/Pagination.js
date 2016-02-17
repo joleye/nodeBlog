@@ -4,7 +4,7 @@ exports.get = function(str, page, pagesize, recordcount){
     var list = [];
     var listpage = {};
     var max_show_pagesize = 10;
-    var pagecount = recordcount / pagesize;
+    var pagecount = Math.ceil(recordcount / pagesize);
     for(var i = 1; i <= pagecount; i++){
     	if((i <= page && i > page - max_show_pagesize/2) || (i > page && i < page + max_show_pagesize /2)){
     		list.push({page : i , url : formatURL(str, i)});
@@ -15,6 +15,7 @@ exports.get = function(str, page, pagesize, recordcount){
           currentpage : page,
           pagesize : config.pagesize,
           recordcount : recordcount,
+          pagecount : pagecount,
           item : list
     };
 

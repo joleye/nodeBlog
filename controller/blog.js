@@ -8,7 +8,7 @@ exports.list = function(req, res){
 	var page = req.query.page ? parseInt(req.query.page) : 1;
 	var start = page > 1 ? (page -1) * config.pagesize : 0;
 
-	blog.getQueryList({}, {skip : start, limit : config.pagesize},function(err, list){
+	blog.getQueryList({}, {skip : start, limit : config.pagesize, sort: {post_time : -1}},function(err, list){
 		for(var i=0;i<list.length;i++){
 			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,true);
 			list[i].content_html_head = FormatHelper.format_body_head(list[i].content_html, config.listBlogFontLen);
@@ -58,7 +58,8 @@ exports.postSave = function(req, res){
 		title :  req.body.title,
 		content : req.body['content-markdown-doc'],
 		content_html : req.body['content-html-code'],
-		tag : req.body.tag
+		tag : req.body.tag,
+		author : res.locals.current_user
 	};
 
 	if(param.title != '' && param.content != ''){
