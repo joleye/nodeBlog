@@ -1,13 +1,12 @@
 <div class="panel">
-    <div class="header">
-      <ul class="breadcrumb">
-        <li><a href="/">主页</a></li>
-        <li class="active">登录</li>
-      </ul>
-    </div>
-  </div>
+<div class="header">
+  <ul class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li class="active">登录</li>
+  </ul>
+</div>
 
-<div class="panel">
+
 <form id="login-form" class="form-horizontal" method="post">
   <div class="form-group">
     <label for="username" class="col-sm-3 control-label">用户名或邮箱</label>
@@ -36,7 +35,7 @@
     </div>
     <label class="control-label text-left" id="login-msg"></label>
   </div>
-  
+  <input type="hidden" name="returl" value="<%=returl%>" />
 </form>
 </div>
 <script type="text/javascript">
@@ -48,7 +47,10 @@
             $('#login-msg').html(res.msg);
             if(res.status){
               $('#login-msg').removeClass('derr').addClass('dright');
-                location.href = '/';
+                if(res.returl && res.returl != 'undefined'){
+                  location.href = res.returl;
+                }else
+                  location.href = '/';
             }else{
               $('#login-msg').removeClass('dright').addClass('derr');
             }

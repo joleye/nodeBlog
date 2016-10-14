@@ -1,11 +1,7 @@
-
-/**
- * Module dependencies.
- */
-
-var blog = require('./controller/blog');
-var user = require('./controller/user');
-var settings = require('./controller/settings');
+var index = require('./routes/index');
+var blog = require('./routes/blog');
+var user = require('./routes/user');
+var settings = require('./routes/settings');
 var comm = require('./controller/comm');
 var express = require('express');
 var path = require('path');
@@ -38,9 +34,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('nodeBlog_'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-
 // set static, dynamic helpers
 _.extend(app.locals, {
   config: config,
@@ -48,47 +41,15 @@ _.extend(app.locals, {
 });
 
 //middileware 用户认证
-app.use(user.auth);
+app.use(comm.auth);
 
 //公用加载
 app.use(comm.datasource);
 
-//列表
-app.get('/', blog.list);
-app.get('/blog', blog.list);
-app.get('/blog/:id', blog.detail);
-app.post('/blog/remove/:id', blog.remove);
-app.get('/note', blog.list);
-
-//关于
-//app.get('/about', about.me);
-
-//内容查看
-//app.get('/detail', blog.detail);
-
-//用户信息
-//app.get('/users', users.list);
-app.get('/settings/profile', settings.profile);
-app.post('/settings/profile', settings.profileSave);
-
-app.get('/settings/admin', settings.admin);
-app.post('/settings/admin', settings.adminSave);
-
-//内容编辑
-app.get('/post', blog.post);
-app.post('/post', blog.postSave);
-app.get('/blog/edit/:id',blog.edit);
-
-//登录注册
-app.get('/signin',user.login);
-app.post('/signin', user.postLogin);
-app.get('/signup',user.register);
-app.post('/signup',user.postRegister);
-app.get('/signout', user.signout);
-app.get('/password_reset',user.password_reset);
-
-
-
+app.use(index);
+app.use('/user', user);
+app.use('/settings', settings);
+app.use('/blog', blog);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -106,6 +67,5 @@ if (config.debug) {
     return res.status(500).send('500 status');
   });
 }
-
 
 module.exports = app;

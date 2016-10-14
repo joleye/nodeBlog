@@ -25,14 +25,15 @@
 						<a href="javascript:;" class="signout" onclick="location.href='/signout?ret_url='+escape(location.href)"><span class="glyphicon glyphicon-log-out"></span> 退出</a>
 						<li><a href="/settings/profile"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
 					<%}else{%>
-						<a href="/signin">登录</a> <a href="/signup">注册</a>
+						<a href="/signin" onclick="this.href+='?returl='+escape(location.href)">登录</a> <a href="/signup" onclick="this.href+='?returl='+escape(location.href)">注册</a>
 					<%}%>
 					</p>
 					</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/">首页</a></li>
-				<li><a href="/post">发布</a></li>
+				<li><a href="/blog/57ff5786e1a7ed1ea83012a8">产品中心</a></li>
+				<li><a href="/blog/post">发布</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -49,7 +50,9 @@
 	<h3>文章分类</h3>
 	<ul>
 	<%for(var i in catelogs){%>
-		<li><a href="/tag/<%=catelogs[i].tagName%>"><%=catelogs[i].tagName!='' ? catelogs[i].tagName : 'undefined'%></a> <span><%=catelogs[i].blogCnt%></span></li>
+		<%if(typeof catelogs[i].tag_name != 'undefined' && catelogs[i].tag_name != ''){%>
+		<li><a href="/tag/<%=catelogs[i].tag_name%>"><%=catelogs[i].tag_name!='' ? catelogs[i].tag_name : 'undefined'%></a> <span><%=catelogs[i].count%></span></li>
+		<%}%>
 		<%}%>
 	</ul>
 	</section>
@@ -75,6 +78,6 @@
 </aside>
 <%}%>
 </div>
-<div class="footer">&copy; nodeBlog.com 2015</div>
+<div class="footer">&copy; nodeBlog.com 2016</div>
 </body>
 </html>

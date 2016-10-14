@@ -6,6 +6,5 @@ Running node-supervisor with
   --exec 'node'
 
 Starting child process with 'node app.js'
-Watching directory '/home/joleye/git/nodeBlog' for changes.
-Express server listening on port 3000
+Watching directory '/home/joleye/git/nodejs/nodeBlog' for changes.
 Sending SIGTERM to child...

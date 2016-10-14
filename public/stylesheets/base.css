@@ -209,3 +209,52 @@ body {
 	content: "";
 	background-color: #d26911;
 }
+
+.replay{
+	padding : 10px;
+}
+
+.replay li,
+.replay ul{
+	list-style : none;
+	margin : 0;
+	padding : 0 ;
+}
+
+.replay li{
+	border-top: 1px solid #ccc;
+	padding: 10px;
+}
+
+.replay h2{
+	font-size: 24px;
+	border-bottom: 1px solid #ccc;
+	padding:10px 0;
+	margin: 0;
+}
+
+.replay .col-sm-12{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.comments{
+	padding-bottom: 20px;
+}
+
+.comments .info .user a{
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.comments .comment-content{
+	padding-top: 10px;
+}
+
+.tag a{
+	color: #fff!important;
+	text-decoration: none;
+	background-color: #ccc;
+	border-radius: 10px;
+	padding: 3px 10px;
+}

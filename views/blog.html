@@ -1,7 +1,7 @@
 <div class="post-list">
 <%for(var i in blogs){%>
 	<div class="item">
-		<h3><a href="blog/<%=blogs[i]._id%>"><%=blogs[i].title!='' ? blogs[i].title : 'undefined'%></a></h3>
+		<h3><a href="/blog/<%=blogs[i]._id%>"><%=blogs[i].title!='' ? blogs[i].title : 'undefined'%></a></h3>
 		<div class="detail">
 			<%-blogs[i].content_html_head%>
 		</div>
@@ -10,6 +10,10 @@
 			<span class="visit">阅读(<%=blogs[i].visit_count%>)</span>
 			<span class="reply">评论(<%=blogs[i].reply_count%>)</span>
 			<span class="time">发布于 <%=blogs[i].post_time_friendly%></span>
+                    <%if(typeof current_user != 'undefined'){%>
+                    <span class="edit"><a href="../blog/edit/<%=blogs[i]._id%>">编辑</a></span>
+                    <span class="drop"><a href="javascript:;" class="drop-blog" data-id="<%=blogs[i]._id%>">删除</a></span>
+                    <%}%>
 		</div>
 	</div>
 <%}%>
@@ -27,7 +31,7 @@
     <li><a href="<%=page.one.url%>"><%=page.one.index%></a></li>
     <li><span>···</span></li>
     <%}%>
-    <%if(page.pagecount>0){%>
+    <%if(page.pagecount>1){%>
     <%for(var i in page.item){var item = page.item[i];%>
     <li<%if(page.currentpage==item.page){%> class="active"<%}%>><a href="<%=item.url%>"><%=item.page%></a></li>
     <%}}%>
@@ -44,5 +48,19 @@
     <%}%>
   </ul>
 </nav>
-
 </div>
+<script type="text/javascript">
+require(['jquery', 'blog'],function($,blog){
+          $('.drop-blog').click(function(){
+            blog.drop($(this).attr('data-id'), function(res){
+                if(res.status){
+                  setTimeout(function(){
+                    location.href = '/blog';
+                  }, 1000);
+                }else{
+                  alert(res.msg);
+                }
+            });
+          });
+});
+</script>

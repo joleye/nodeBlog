@@ -1,21 +1,20 @@
+var express = require('express');
+var router = express.Router();
 var User = require('../proxy/user');
 var models = require('../models');
 var UserModel = models.User;
 var utility = require('utility');
 
-exports.profile = function(req, res){
-
+router.get('/profile', function(req, res){
 	var username = res.locals.current_user;
 	res.locals.sidebar = 1;
 
 	User.getUserByName(username, function(err, info){
 		return res.render('settings/profile',{info: info});	
-	});
+	});	
+});
 
-	
-}
-
-exports.profileSave = function(req, res){
+router.post('/profile', function(req, res){
 	var info = {
 		realname : req.body.realname,
 		office : req.body.office,
@@ -23,7 +22,6 @@ exports.profileSave = function(req, res){
 	}
 
 	var username = res.locals.current_user;
-	
 
 	UserModel.update({'username' : username}, info, {}, function(err, docs){
 		if(err){
@@ -32,22 +30,19 @@ exports.profileSave = function(req, res){
 			res.json({status : true , msg : '保存成功'});
 		}
 	});
-}
+});
 
-exports.admin = function(req, res){
-
+router.get('/admin', function(req, res){
 	var username = res.locals.current_user;
 	res.locals.sidebar = 1;
 
 	User.getUserByName(username, function(err, info){
 		return res.render('settings/admin',{info: info});	
-	});
-
-	
-}
+	});	
+});
 
 /*修改密码保存*/
-exports.adminSave = function(req, res){
+router.post('/admin', function(req, res){
 	var username = res.locals.current_user;
 	var password = req.body.password;
 	var newpassword = req.body.newpassword;
@@ -72,4 +67,6 @@ exports.adminSave = function(req, res){
 	}else{
 		res.json({status : false , msg : '两次输入的密码不对应!'});
 	}
-}
+});
+
+module.exports = router;

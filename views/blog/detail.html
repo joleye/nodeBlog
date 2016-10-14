@@ -2,39 +2,101 @@
 <h2 class="title">
 <%-title%>
 </h2>
-
+<div class="tag">
+<%
+if(tag){
+var tags = tag.split(' ');
+for(var i = 0; i<tags.length; i++){%>
+<a href="/tag/<%=tags[i]%>"><%=tags[i]%></a>
+<%}}%>
+</div>
 <div class="content">
 <%-content_html%>
 </div>
 
 <div class="bar">
 	<span class="date">posted @ <%=post_time_friendly%></span>
-	<span class="author"><%//author%></span>
+	<span class="author"><a href="#"><%=author%></a></span>
 	<span class="visit">阅读(<%=visit_count%>)</span>
 	<span class="reply">评论(<%=reply_count%>)</span>
+	<%if(typeof current_user != 'undefined'){%>
 	<span class="edit"><a href="../blog/edit/<%=_id%>">编辑</a></span>
 	<span class="drop"><a href="javascript:;" id="drop" data-id="<%=_id%>">删除</a></span>
+	<%}%>
 </div>
 
 <div class="replay">
-<h2>回复</h2>
-<ul>
-<li></li>
-</ul>
-
-<div>
-
-</div>
+	<h2><%=comments.length%>条评论</h2>
+	<div class="comments">
+		<ul>
+		<%for(var i = 0; i<comments.length; i++){%>
+			<li>
+			<div class="info">
+				<span class="user"><a href="#"><%-comments[i].author%></a></span>
+				<span class="date"><%-comments[i].comment_date_friendly%></span>
+			</div>
+			<div class="comment-content">
+				<p><%-comments[i].comment_content%></p>
+			</div>
+			</li>
+		<%}%>
+		</ul>
+	</div>
+	<div class="replay-content">
+		<form class="form-horizontal" action=""  id="replay-form" method="POST">
+			<div class="form-group">
+				<div class="text-left col-sm-12">
+				    <textarea class="form-control"  name="comment_content" placeholder="回复内容"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="text-left col-sm-12">
+					<button type="button" id="save-btn" class="btn btn-success">提交</button>
+				</div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-12">
+			      <label class="control-label text-left" id="status-msg"></label>
+			    </div>
+			  </div>
+		</form>
+	</div>
 </div>
 
 <script type="text/javascript">
-	require(['jquery','blog'],function($,blog){
+	require(['jquery', 'blog', 'ye_check'],function($,blog){
 		$('#drop').click(function(){
-			blog.drop($(this).attr('data-id'),function(msg){
-				location.href = '/blog';
+			blog.drop($(this).attr('data-id'), function(res){
+				if(res.status){
+					setTimeout(function(){
+						location.href = '/blog';
+					}, 1000);
+				}else{
+					alert(res.msg);
+				}
 			});
 		})
 		
+		$('#save-btn').click(function(){
+			ye.verify('#replay-form').do_post({
+				method : 'ajax', //ajax模式提交
+				btn : {
+				  name : '#save-btn',
+				  text : 'load...'
+				},
+				success : function(res){
+				    $('#status-msg').html(res.msg);
+				    if(res.status){
+				      	$('#status-msg').removeClass('derr').addClass('dright');
+				      	setTimeout(function(){
+				      		location.reload();
+				      	}, 1500);
+				    }else{
+				      	$('#status-msg').removeClass('dright').addClass('derr');
+				    }
+				}
+			});
+		});
 	});
 </script>
 <script src="/lib/js/highlight.pack.js"></script>

@@ -8,9 +8,12 @@ mongoose.connect(config.db, function (err) {
   }
 });
 
-
 require('./blog');
 require('./user');
+require('./tag');
+require('./comments');
 
 exports.Blog = mongoose.model('Blog');
 exports.User = mongoose.model('User');
+exports.Tag = mongoose.model('Tag');
+exports.Comments = mongoose.model('Comments');
