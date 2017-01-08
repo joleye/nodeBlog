@@ -1,4 +1,4 @@
 #!/bin/bash
 
-#nohup node app.js > nohup.log &
-nohup supervisor app.js > nohup.log &
+#nohup node app.js > nohup.out &
+nohup supervisor app.js > nohup.out &
