@@ -86,11 +86,7 @@ exports.edit = function(req, res){
 	if(!blog_id){
 		res.render('notify',{result : false , msg : '没有找到该文章! '});
 	}else{
-<<<<<<< HEAD
   		blog.getBlogById(blog_id,function(err, blog){
-=======
-		blog.getBlogById(blog_id,function(err, blog){
->>>>>>> 86b727ae1a93799316b6391c491adbc7ad49faad
 		if(!blog){
 			res.render('notify',{result : false, msg : '该文章不存在!'})
 		}else

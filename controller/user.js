@@ -27,6 +27,7 @@ exports.postRegister = function(req, res){
 
 		user.save(param,function(err){
 			if(!err){
+				user.login(param.email, param.password); //TODO 这里需要添加登录逻辑
 				res.render('notify',{result : true, msg : '注册成功'});
 			}else{
 				res.render('notify',{result : false, msg : '注册失败,'+err});
