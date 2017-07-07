@@ -136,7 +136,16 @@ body {
 
 #notify{
 	margin-top:  20px;
+<<<<<<< HEAD
+	padding: 10px 20px;
+}
+
+.panel .row{
+	padding : 10px;
+	border-top: 1px solid #f0f0f0;
+=======
 	padding: 20px 10px;
+>>>>>>> 5f362ea7fd8e63053f3fe50afe3facf85674da1a
 }
 
 .bar{
