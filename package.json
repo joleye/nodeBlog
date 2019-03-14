@@ -19,7 +19,10 @@
     "morgan": "~1.5.3",
     "serve-favicon": "~2.2.1",
     "lodash": "4.17.11",
-    "loader": "0.1.4"
+    "loader": "0.1.4",
+    "file-stream-rotator": "^0.2.1",
+    "log4js": "^2.5.3",
+    "pm2": "^2.10.4"
   },
   "devDependencies": {
     "errorhandler": "^1.2.0",

@@ -8,6 +8,9 @@ var UserModel = models.User;
 var FormatHelper = require('../common/FormatHelper');
 var Pagination = require('../common/Pagination');
 var config = require('../config');
+var utils = require('../common/utils');
+
+const logger = utils.getLogger(utils.getFileName(__filename));
 
 /*显示blog文章*/
 router.get('/blog' , function(req, res){
@@ -33,19 +36,23 @@ router.get('/tag/:key', function(req, res){
 
 function display_blog_list(req, res, opt){
 	var page = req.query.page ? parseInt(req.query.page) : 1;
-	var start = page > 1 ? (page -1) * config.pagesize : 0;
+	var start = page > 1 ? (page -1) * config.page_size : 0;
 
-	blog.getQueryList(opt, {skip : start, limit : config.pagesize, sort: {post_time : -1}},function(err, list){
-		for(var i=0;i<list.length;i++){
-			list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time,true);
-			list[i].content_html_head = FormatHelper.format_body_head(list[i].content_html, config.listBlogFontLen);
+	blog.getQueryList(opt, {skip : start, limit : config.page_size, sort: {post_time : -1}},function(err, list){
+		if(!err) {
+            for (var i = 0; i < list.length; i++) {
+                list[i].post_time_friendly = FormatHelper.format_date(list[i].post_time, true);
+                list[i].content_html_head = FormatHelper.format_body_head(list[i].content_html, config.listBlogFontLen);
+            }
+            blog.getQueryListCount(opt, function (err, count) {
+                res.render('blog', {
+                    page: Pagination.get('?page={1}', page, config.page_size, count),
+                    blogs: list
+                });
+            });
+        }else{
+            res.render("notify",{status : false, msg : err});
 		}
-		blog.getQueryListCount(opt, function(err, count){
-			res.render('blog', {
-				page : Pagination.get('?page={1}', page, config.pagesize, count),
-				blogs : list
-			});
-		});
 	});
 }
 
