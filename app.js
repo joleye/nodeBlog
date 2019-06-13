@@ -3,7 +3,7 @@ let path = require('path');
 let Loader = require('loader');
 let favicon = require('serve-favicon');
 let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser'); 
+let bodyParser = require('body-parser');
 let errorhandler = require('errorhandler');
 let fs = require('fs');
 let FileStreamRotator = require('file-stream-rotator');
@@ -32,7 +32,7 @@ app.locals._layoutFile = 'layout.html';
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 // app.use(logger('dev'));//控制台打印日志
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 // 设置 Cookie
 app.use(cookieParser('nodeBlog_'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -86,8 +86,8 @@ log4js.configure({
 
 // set static, dynamic helpers
 _.extend(app.locals, {
-  config: config,
-  //Loader: Loader
+    config: config,
+    //Loader: Loader
 });
 
 //middileware 用户认证
@@ -102,20 +102,21 @@ app.use('/settings', settings);
 app.use('/blog', blog);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  let err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    let err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 if (config.debug) {
-  app.use(errorhandler());
+    app.use(errorhandler());
 } else {
-  app.use(function (err, req, res, next) {
-    console.error('server 500 error:', err);
-    return res.status(500).send('500 status');
-  });
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        console.error('server 500 error:', err);
+        return res.status(500).send('500 status');
+    });
 }
 
 module.exports = app;
