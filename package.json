@@ -18,7 +18,7 @@
     "express": "~4.12.4",
     "morgan": "~1.5.3",
     "serve-favicon": "~2.2.1",
-    "lodash": "4.17.11",
+    "lodash": "^4.17.15",
     "loader": "0.1.4"
   },
   "devDependencies": {
