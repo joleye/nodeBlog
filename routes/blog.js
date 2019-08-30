@@ -7,6 +7,9 @@ var CommentsModel = require('../models').Comments;
 var config = require('../config');
 var FormatHelper = require('../common/FormatHelper');
 var Pagination = require('../common/Pagination');
+var utils = require('../common/utils');
+
+const logger = utils.getLogger(utils.getFileName(__filename));
 
 /*显示blog文章*/
 
@@ -38,6 +41,7 @@ router.post('/post', function(req, res){
 					param.result = false;
 					param.msg = err;
 				}else{
+                    logger.info('修改成功，%s', param.title);
 					param.result = true;
 					param.msg = '修改成功';
 				}
@@ -50,6 +54,7 @@ router.post('/post', function(req, res){
 					param.result = false;
 					param.msg = err;
 				}else{
+                    logger.info('发布成功，%s', param.title);
 					param.result = true;
 					param.msg = '发布成功';	
 				}

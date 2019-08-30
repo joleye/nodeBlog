@@ -1,83 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title><%=typeof(title) != 'undefined' ? title + ' - ' : ''%><%=typeof(config.sitename) !='undefined' ? config.sitename : ''%></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-theme.min.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
-<script type="text/javascript"  src="/lib/js/require.js"></script>
-<script type="text/javascript" src="/js/main.js" ></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%=typeof(title) != 'undefined' ? title + ' - ' : ''%><%=config.site_name || ''%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css"/>
+    <script type="text/javascript" src="/lib/js/require.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
 <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
-	<div class="container">
-		<div class="navbar-header">
-			<a href="/" class="navbar-brand"><%=typeof(config.sitename) !='undefined' ? config.sitename : ''%></a>
-		</div>
-		<nav class="collapse navbar-collapse bs-navbar-collapse"
-			role="navigation">
-			<ul class="nav navbar-nav">
-				<li><p class="navbar-text">
-					<%if(typeof current_user != 'undefined'){%>
-						<span class="glyphicon glyphicon-user"></span> <%=current_realname ? current_realname : current_user%> 
-						<a href="javascript:;" class="signout" onclick="location.href='/signout?ret_url='+escape(location.href)"><span class="glyphicon glyphicon-log-out"></span> 退出</a>
-						<li><a href="/settings/profile"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
-					<%}else{%>
-						<a href="/signin" onclick="this.href+='?returl='+escape(location.href)">登录</a> <a href="/signup" onclick="this.href+='?returl='+escape(location.href)">注册</a>
-					<%}%>
-					</p>
-					</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">首页</a></li>
-				<li><a href="/blog/57ff5786e1a7ed1ea83012a8">产品中心</a></li>
-				<li><a href="/blog/post">发布</a></li>
-			</ul>
-		</nav>
-	</div>
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><%=config.site_name || ''%></a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse"
+             role="navigation">
+            <ul class="nav navbar-nav">
+                <li><p class="navbar-text">
+                    <%if(typeof current_user != 'undefined'){%>
+                    <span class="glyphicon glyphicon-user"></span> <%=current_realname ? current_realname :
+                    current_user%>
+                    <a href="javascript:;" class="signout"
+                       onclick="location.href='/signout?ret_url='+escape(location.href)"><span
+                            class="glyphicon glyphicon-log-out"></span> 退出</a>
+                <li><a href="/settings/profile"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+                <%}else{%>
+                <a href="/signin" onclick="this.href+='?returl='+escape(location.href)">登录</a>
+                <a href="/signup" onclick="this.href+='?returl='+escape(location.href)">注册</a>
+                <%}%>
+                </p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">首页</a></li>
+                <li><a href="/blog/57ff5786e1a7ed1ea83012a8">产品中心</a></li>
+                <li><a href="/blog/post">发布</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 <div class="container" id="main">
-<%if(typeof sidebar == 'undefined'){%><div id="bd"><%}%>
-<%- body %>
-<%if(typeof sidebar == 'undefined'){%></div><%}%>
+    <%if(typeof sidebar == 'undefined'){%>
+    <div id="bd"><%}%>
+        <%- body %>
+        <%if(typeof sidebar == 'undefined'){%>
+    </div>
+    <%}%>
 
-<%if(typeof sidebar == 'undefined'){%>
-	<aside class="sidebar">
-	<%if(typeof catelogs != 'undefined'){%>
-	<section class="side-item">
-	<h3>文章分类</h3>
-	<ul>
-	<%for(var i in catelogs){%>
-		<%if(typeof catelogs[i].tag_name != 'undefined' && catelogs[i].tag_name != ''){%>
-		<li><a href="/tag/<%=catelogs[i].tag_name%>"><%=catelogs[i].tag_name!='' ? catelogs[i].tag_name : 'undefined'%></a> <span><%=catelogs[i].count%></span></li>
-		<%}%>
-		<%}%>
-	</ul>
-	</section>
-	<%}%>
+    <%if(typeof sidebar == 'undefined'){%>
+    <aside class="sidebar">
+        <%if(typeof catelogs != 'undefined'){%>
+        <section class="side-item">
+            <h3>文章分类</h3>
+            <ul>
+                <%for(var i in catelogs){%>
+                <%if(typeof catelogs[i].tag_name != 'undefined' && catelogs[i].tag_name != ''){%>
+                <li><a href="/tag/<%=catelogs[i].tag_name%>"><%=catelogs[i].tag_name!='' ? catelogs[i].tag_name :
+                    'undefined'%></a> <span><%=catelogs[i].count%></span></li>
+                <%}%>
+                <%}%>
+            </ul>
+        </section>
+        <%}%>
 
-	<%if(typeof topBlogs != 'undefined'){%>
-	<section class="side-item">
-	<h3>推荐文章</h3>
-	<ul>
-	<%for(var i in topBlogs){%>
-		<li><a href="/blog/<%=topBlogs[i]._id%>"><%=topBlogs[i].title!='' ? topBlogs[i].title : 'undefined'%></a></li>
-		<%}%>
-	</ul>
-	</section>
-	<%}%>
+        <%if(typeof topBlogs != 'undefined'){%>
+        <section class="side-item">
+            <h3>推荐文章</h3>
+            <ul>
+                <%for(var i in topBlogs){%>
+                <li><a href="/blog/<%=topBlogs[i]._id%>"><%=topBlogs[i].title!='' ? topBlogs[i].title :
+                    'undefined'%></a></li>
+                <%}%>
+            </ul>
+        </section>
+        <%}%>
 
-	<section class="side-item">
-	<h3>友情连接</h3>
-	<ul>
-		<li><a href="http://www.talkdata.com.cn" target="_blank">大数据官网</a></li>
-	</ul>
-	</section>
-</aside>
-<%}%>
+        <section class="side-item">
+            <h3>友情连接</h3>
+            <ul>
+                <li><a href="https://www.google.com/ncr" target="_blank">google</a></li>
+            </ul>
+        </section>
+    </aside>
+    <%}%>
 </div>
-<div class="footer">&copy; nodeBlog.com 2016</div>
+<div class="footer">&copy; nodeBlog.com 2019</div>
 </body>
 </html>

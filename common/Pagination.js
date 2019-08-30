@@ -13,7 +13,7 @@ exports.get = function(str, page, pagesize, recordcount){
     }
     var p = {
           currentpage : page,
-          pagesize : config.pagesize,
+          pagesize : config.page_size,
           recordcount : recordcount,
           pagecount : pagecount,
           item : list

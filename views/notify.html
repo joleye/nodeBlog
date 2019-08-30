@@ -1,1 +1,1 @@
-<div id="notify" class="alert alert-<%=result ? 'success' : 'warning'%>" role="alert"><%=msg%></div>
+<div id="notify" class="alert alert-<%=typeof result != 'undefined' && result ? 'success' : 'warning'%>" role="alert"><%=msg%></div>
