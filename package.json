@@ -1,5 +1,5 @@
 {
-  "name": "nodeBlog",
+  "name": "nodeblog",
   "version": "0.1.1",
   "author": {
     "name": "li.zhang",
@@ -12,7 +12,7 @@
     "test": "make test"
   },
   "dependencies": {
-    "mongoose": "5.7.7",
+    "mongoose": "^5.9.5",
     "utility": "1.0.0",
     "ejs-mate": "2.0.0",
     "body-parser": "~1.12.4",
@@ -22,7 +22,7 @@
     "express": "~4.12.4",
     "morgan": "^1.9.1",
     "serve-favicon": "~2.2.1",
-    "lodash": "4.17.11",
+    "lodash": "^4.17.19",
     "loader": "0.1.4",
     "file-stream-rotator": "^0.2.1",
     "log4js": "^2.5.3",
